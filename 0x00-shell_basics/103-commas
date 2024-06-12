@@ -1,2 +1,2 @@
 #!/bin/bash
-{ ls -Ap1 --group-directories-first; ls -Ap1 --group-directories-first | awk '/^\./' | sort -f -d; } | sort -f -d | awk 'BEGIN{ORS=", "}; {print $1}' | sed 's/, $/\n/'
+(ls -Ap --group-directories-first | sort -f -d | awk '{printf "%s,", $0} END {print ""}' | sed 's/,/, /g;s/, $//') | tr -d '\n'; echo ""
