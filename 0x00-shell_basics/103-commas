@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -p --group-directories-first -m
+ls -Ap1 --group-directories-first | LC_ALL=C.UTF-8 sort -df
