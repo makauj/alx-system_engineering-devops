@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -maxdepth 1 \( -name '.*' -o -name '*' \) -print0 | sort -z | tr '\0' '\n' | sed 's:^\./::' | sed '/^$/d' | awk 'BEGIN { ORS="," } { print }' | sed 's/,$/\n/'
+find . -maxdepth 1 \( -name '.*' -o -name '*' \) -print0 | sort -z | tr '\0' '\n' | sed 's:^\./::' | sed '/^$/d' | awk 'BEGIN { ORS=", " } { print }' | sed 's/, $/\n/'
