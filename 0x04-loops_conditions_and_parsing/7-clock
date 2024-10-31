@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+j=0 # hours
+while [ $j -le 12 ]; do
+	k=1 # minutes initialied at 1 and reset for each hour
+	echo "Hour: $j"
+	while [ $k -le 59 ]; do
+		echo "$k"
+		((k++))
+	done
+	((j++))
+done

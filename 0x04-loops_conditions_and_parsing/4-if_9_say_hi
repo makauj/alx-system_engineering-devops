@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+j=1
+while [ $j -le 10 ]; do
+	if [ $j -eq 9 ]; then
+		echo "hi"
+	else
+		echo "Best School"
+	fi
+	((j++))
+done
