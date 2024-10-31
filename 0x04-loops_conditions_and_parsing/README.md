@@ -134,3 +134,38 @@ Your script should only display:
 Requirements:
 
 - You must use the `while` loop (`for` and `until` are forbidden)
+
+**12. Tell the story of passwd**
+The file `/etc/passwd` has already been covered in a previous project and you should be familiar with it. Today we will make up a story based on it.
+
+Write a Bash script that displays the content of the file `/etc/passwd`, using the `while` loop + IFS.
+
+Format: `The user USERNAME is part of the GROUP_ID gang, lives in HOME_DIRECTORY and rides COMMAND/SHELL. USER ID's place is protected by the passcode PASSWORD, more info about the user here: USER ID INFO`
+
+Requirements:
+
+- You must use the `while` loop (`for` and `until` are forbidden)
+
+**13. Let's parse Apache logs**
+Write a Bash script that displays the visitor IP along with the HTTP status code from the Apache log file.
+
+Requirement:
+
+- Format: `IP HTTP_CODE`
+	- in a list format
+	- See example
+- You must use `awk`
+- You are not allowed to use `while`, `for`, `until` and `cut`
+- Download and commit the [apache-access.log](https://intranet-projects-files.s3.amazonaws.com/holbertonschool-sysadmin_devops/80/apache-access.log) file along with your answers files
+
+**14. Dig the data**
+Using what you did in the previous exercise, write a Bash script that groups visitors by IP and HTTP status code, and displays this data.
+
+Requirements:
+
+- The exact format must be:
+	- OCCURENCE_NUMBER IP HTTP_CODE
+	- In list format
+- Ordered from the greatest to the lowest number of occurrences
+- You must use `awk`
+- You are not allowed to use `while`, `for`, `until` and `cut`
