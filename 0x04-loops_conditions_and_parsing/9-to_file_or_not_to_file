@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Read file and print its status: exists, is empty or not and is regular 
 if [ -e "school" ]; then
-	echo "School file exists"
+	echo "school file exists"
 
 	if [ ! -s "school" ]; then
 		echo "school file is empty"
