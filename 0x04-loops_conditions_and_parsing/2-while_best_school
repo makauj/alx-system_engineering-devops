@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#Print text 10 tomes
 i="Best School"
 j=1
 

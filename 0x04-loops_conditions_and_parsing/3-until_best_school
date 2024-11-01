@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Print text 10 times using until
 i="Best School"
 j=1
 until [ $j -gt 10 ]

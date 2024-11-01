@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Read file
 for file in *;
 do
 	echo "$file" | cut -d "-" -f 2

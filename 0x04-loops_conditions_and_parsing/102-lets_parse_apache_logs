@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Read and display information in apache access file
 if [ ! -f apache-access.log ]; then
 	exit 1
 fi

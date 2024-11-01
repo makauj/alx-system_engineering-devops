@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Read a file and dispay information
 while IFS=: read -r username _ userid _ home_directory _; do
     echo "Username: $username"
     echo "User ID: $userid"

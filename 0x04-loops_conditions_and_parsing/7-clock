@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Print time. 1 hour then 59 minutes. Repeat 12 times
 j=0 # hours
 while [ $j -le 12 ]; do
 	k=1 # minutes initialied at 1 and reset for each hour
