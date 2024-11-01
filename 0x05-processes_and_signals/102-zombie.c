@@ -9,11 +9,11 @@
  */
 int infinite_while(void)
 {
-        while (1)
-        {
-                sleep(1);
-        }
-        return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
 /**
  * main - Creates 5 zombie processes
@@ -32,9 +32,7 @@ int main(void)
 
 		if (!pid)
 			return (0);
-
-		else
-			printf("Zombie process created, PID: %d\n", pid);
+		printf("Zombie process created, PID: %d\n", pid);
 	}
 	infinite_while();
 }
