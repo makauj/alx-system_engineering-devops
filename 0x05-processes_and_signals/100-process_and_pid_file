@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Create the PID file
 
 echo $$ >> /var/run/myscript.pid
