@@ -2,6 +2,7 @@
 # Print text 10 times using while and if - elif - else
 j=1
 while [ $j -le 10 ]; do
+	echo "Best School"
 	if [ $j -eq 9 ]; then
 		echo "Hi"
 	else
