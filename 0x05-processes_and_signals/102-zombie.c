@@ -2,7 +2,19 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int infinite_while(void);
+/**
+ * infinite_while - infinite loop
+ *
+ * Return: 0
+ */
+int infinite_while(void)
+{
+        while (1)
+        {
+                sleep(1);
+        }
+        return (0);
+}
 /**
  * main - Creates 5 zombie processes
  *
