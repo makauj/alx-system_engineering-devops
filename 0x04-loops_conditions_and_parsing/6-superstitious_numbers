@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-Print text 10 times replace some of the text
+# Print text 10 times replace some of the text
 j=1
 while [ $j -le 20 ]; do
 	case $j in
