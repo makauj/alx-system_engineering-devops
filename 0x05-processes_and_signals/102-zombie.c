@@ -23,11 +23,6 @@ int main(void)
 
 		else
 			printf("Zombie process created, PID: %d\n", pid);
-		/**
-		 * Sleep for a short time to ensure
-		 * the child processes become zombies
-		 */
-		sleep(1);
 	}
 	infinite_while();
 }
