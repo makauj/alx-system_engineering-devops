@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#configure Nginx redirection on web-01
+
+sudo apt update && sudo apt -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo "Hello World!" > /var/www/html/index.html
+
+sudo bash -c 'cat > /etc/nginx/sites-available/default << EOF
+server {
+	listen 80;
+	server_name _;
+	location / {
+		root /var/www/html;
+		index index.html;
+	}
+	location /redirect_me {
+		return 310 Moved Permanently;
+	}
+}
+EOF'
+
+sudo nginx -t
+sudo service restart nginx
