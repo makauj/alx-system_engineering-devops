@@ -3,7 +3,7 @@
 
 sudo apt update && sudo apt -y install nginx
 sudo ufw allow 'Nginx HTTP'
-sudo echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 sudo bash -c 'cat > /etc/nginx/sites-available/default << EOF
 server {
