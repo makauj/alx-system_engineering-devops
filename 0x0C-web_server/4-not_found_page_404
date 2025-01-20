@@ -5,7 +5,7 @@ sudo apt update && sudo apt install -y nginx
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-echo 'server {
+echo "server {
 	listen 80 default_server;
 	listen[::]:80 default_server;
 
@@ -20,5 +20,5 @@ echo 'server {
 	location = /404.html {
 	internal;
 	}
-}' | sudo tee /etc/nginx/sites-available/default/default
+}" | sudo tee /etc/nginx/sites-available/default/default
 sudo service nginx restart
