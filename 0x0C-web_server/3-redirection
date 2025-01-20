@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#configure Nginx redirection on web-01
+# configure Nginx redirection on web-01
 
 sudo apt update && sudo apt -y install nginx
 sudo ufw allow 'Nginx HTTP'
