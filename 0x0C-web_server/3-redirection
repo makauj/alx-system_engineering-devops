@@ -20,4 +20,4 @@ server {
 EOF'
 
 sudo nginx -t
-sudo service restart nginx
+sudo service nginx restart
