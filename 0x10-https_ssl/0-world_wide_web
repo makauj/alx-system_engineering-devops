@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Function to fetch and display information for a subdomain
+
+get_dns_info() {
+    script=$(dig "$2"."$1" +short | tr '\n' ' ' | sed 's/ *$//')
+    if [ -z "$script" ]; then
+        echo "No DNS record found for $2.$1"
+    else
+        echo "$2 $script" | awk '{print "The subdomain " $1 " is a A record and points to " $2}'
+    fi
+}
+
+if [ "$#" -eq 1 ]; then
+    dns_config "$1" "www"
+    dns_config "$1" "lb-01"
+    dns_config "$1" "web-01"
+    dns_config "$1" "web-02"
+elif [ "$#" -eq 2 ]; then
+    dns_config "$1" "$2"
+fi
