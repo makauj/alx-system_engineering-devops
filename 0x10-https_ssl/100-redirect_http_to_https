@@ -43,5 +43,5 @@ backend web-backend
 frontend proxynode
     bind *:80
     bind *:443 ssl crt /etc/letsencrypt/live/www.makau.tech/makau.pem
-    mode http
+    http-request redirect scheme https unless { ssl_fc }
     default_backend web-backend
