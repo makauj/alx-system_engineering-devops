@@ -2,19 +2,15 @@
 # Function to fetch and display information for a subdomain
 
 get_dns_info() {
-    script=$(dig "$2"."$1" +short | tr '\n' ' ' | sed 's/ *$//')
-    if [ -z "$script" ]; then
-        echo "No DNS record found for $2.$1"
-    else
-        echo "$2 $script" | awk '{print "The subdomain " $1 " is a A record and points to " $2}'
-    fi
+    script=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+    echo "$2 $script" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
 
 if [ "$#" -eq 1 ]; then
-    dns_config "$1" "www"
-    dns_config "$1" "lb-01"
-    dns_config "$1" "web-01"
-    dns_config "$1" "web-02"
+    get_dns_info "$1" "www"
+    get_dns_info "$1" "lb-01"
+    get_dns_info "$1" "web-01"
+    get_dns_info "$1" "web-02"
 elif [ "$#" -eq 2 ]; then
-    dns_config "$1" "$2"
+    get_dns_info "$1" "$2"
 fi
