@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
 # MySQL replica configuration file
-
+# 
 
 [mysqld]
 pid-file        = /var/run/mysqld/mysqld.pid
