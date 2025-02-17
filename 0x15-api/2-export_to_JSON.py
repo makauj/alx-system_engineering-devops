@@ -24,4 +24,3 @@ def export_to_json():
                                    "username": user_dict.get(user_id)})
     with open('todo_all_employees.json', 'w') as f:
         json.dump(user_data, f)
-        

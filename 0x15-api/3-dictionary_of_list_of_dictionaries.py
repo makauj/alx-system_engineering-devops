@@ -24,4 +24,3 @@ if __name__ == "__main__":
         users_dict[user_id].append(task)
     with open("todo_all_employees.json", "w") as jsonfile:
         json.dump(users_dict, jsonfile)
-
