@@ -2,34 +2,34 @@
 """Gather data using api"""
 import requests
 import sys
-import json
 
 
-def get_data(employee_id):
-    """Get data from api"""
-    url = "https://jsonplaceholder.typicode.com"
-    user_res = requests.get(url + "/users/{}".format(employee_id))
-    user = user_res.json()
-    if not user:
-        return (None, None)
-    todos_res = requests.get(url + "/todos", params={"userId": employee_id})
-    todos = todos_res.json()
-    if not todos:
-        return (None, None)
+if __name__ == "__main__":
+    employee_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    response = requests.get(url)
 
-    return (user, todos)
+    # Get the name of the employee
+    employee = response.json().get("name")
+    employee_url = url + "/" + "employee"
+    response = requests.get(employee_url)
 
+    # Get the tasks of the employee
+    todo_url = url + "/" + "todos"
+    response = requests.get(todo_url)
+    tasks = response.json()
+    done = 0
+    completed_tasks = []
 
-def export_data(employee_id):
-    """Export data to json"""
-    user, todos = get_data(employee_id)
-    if not user or not todos:
-        return
-    username = user.get("username")
-    data = []
-    for todo in todos:
-        data.append({"task": todo.get("title"),
-                     "completed": todo.get("completed"),
-                     "username": username})
-    with open("{}.json".format(employee_id), "w") as jsonfile:
-        jsonfile.write(json.dumps({employee_id: data}))
+    # Count the number of completed tasks
+    for task in tasks:
+        if task.get("completed") is True:
+            done += 1
+            completed_tasks.append(task.get("title"))
+
+    # Print the result
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employee, done, len(tasks)))
+
+    for task in completed_tasks:
+        print("\t {}".format(task))
