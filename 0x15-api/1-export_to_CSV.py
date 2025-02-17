@@ -4,18 +4,20 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
-    user_id = sys.argv[1]
-    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    response = requests.get(url)
-    user = response.json().get('username')
-    todo_url = "https://jsonplaceholder.typicode.com/users/todos"
-    response = requests.get(todo_url)
-    todos = response.json()
+if __name__ == '__main__':
+    employeeId = sys.argv[1]
+    baseUrl = "https://jsonplaceholder.typicode.com/users"
+    url = baseUrl + "/" + employeeId
 
-    with open(f"{user_id}.csv", 'w') as csvfile:
-        for task in todos:
-            csvfile.write('"{}","{}","{}","{}"\n'.format(
-                user_id, user,
-                task.get("completed"),
-                task.get("title")))
+    response = requests.get(url)
+    username = response.json().get('username')
+
+    todoUrl = url + "/todos"
+    response = requests.get(todoUrl)
+    tasks = response.json()
+
+    with open('{}.csv'.format(employeeId), 'w') as file:
+        for task in tasks:
+            file.write('"{}","{}","{}","{}"\n'
+                       .format(employeeId, username, task.get('completed'),
+                               task.get('title')))
