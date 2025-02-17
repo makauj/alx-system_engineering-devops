@@ -6,12 +6,12 @@ import sys
 
 if __name__ == "__main__":
     employee_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    url = "https://jsonplaceholder.typicode.com/users/{}"
     response = requests.get(url)
 
     # Get the name of the employee
     employee = response.json().get("name")
-    employee_url = url + "/" + "employee"
+    employee_url = url + "/" + "employee_id"
     response = requests.get(employee_url)
 
     # Get the tasks of the employee
