@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Export data in the CSV format"""
+import re
 import requests
 import sys
-import re
 
 
 url = 'https://jsonplaceholder.typicode.com'
