@@ -14,3 +14,15 @@
 10. Pythonic Function name style
 11. Pythonic Constant name style
 12. Significance of CapWords or CamelCase in Python
+
+### Notes
+
+***What is an API?***
+An Application Programming interface (API) is a server that lets you request and send data using code. APIs define what methods and formats an application can use to request and exchange information with a server.
+
+***REST API??***
+This is an API that follows the RES architecutral style and design principles.
+REpresentational State Transfer (REST) is a set of rules and guidelines about how you should build a web API.
+They are not a standard or a protocol, just a set of architectural constraints.
+
+***What are microservices***
