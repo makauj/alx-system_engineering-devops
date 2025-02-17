@@ -10,12 +10,12 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
     response = requests.get(url)
     user = response.json()
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
-    response = requests.get(url)
+    todo_url = "https://jsonplaceholder.typicode.com/users/todos"
+    response = requests.get(todo_url)
     todos = response.json()
 
     with open("{}.csv".format(user_id), "w") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for todo in todos:
-            writer.writerow([user_id, user.get("username"),
-                             todo.get("completed"), todo.get("title")])
+        for task in todos:
+            csvfile.write('"{}","{}","{}","{}"\n'.format(
+                user_id, user.get("username"),
+                task.get("completed"), task.get("title")))
