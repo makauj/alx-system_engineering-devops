@@ -2,25 +2,27 @@
 """exoprt to json file"""
 import json
 import requests
+import sys
 
 
 def export_to_json():
     """export to json file"""
-    url = 'https://jsonplaceholder.typicode.com/todos'
-    user_url = 'https://jsonplaceholder.typicode.com/users'
-    user = requests.get(user_url).json()
-    user_dict = {}
-    for i in user:
-        user_dict[i.get('id')] = i.get('username')
-    r = requests.get(url)
-    data = r.json()
-    user_data = {}
-    for i in data:
-        user_id = i.get('userId')
-        if user_id not in user_data:
-            user_data[user_id] = []
-        user_data[user_id].append({"task": i.get('title'),
-                                   "completed": i.get('completed'),
-                                   "username": user_dict.get(user_id)})
-    with open('todo_all_employees.json', 'w') as f:
-        json.dump(user_data, f)
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com"
+    user_url = url + "/users/" + user_id
+    todos_url = url + "/todos"
+    user = requests.get(user_url)
+    todos = requests.get(todos_url)
+
+    username = user.json().get('username')
+    tasks = todos.json()
+
+    dictionary = {user_id: []}
+    for task in tasks:
+        dictionary[user_id].append({
+            "task": task.get('title'),
+            "completed": task.get('completed'),
+            "username": username
+        })
+    with open(user_id + ".json", 'w') as f:
+        json.dump(dictionary, f)

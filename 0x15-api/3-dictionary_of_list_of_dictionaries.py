@@ -7,9 +7,10 @@ import requests
 url = "https://jsonplaceholder.typicode.com"
 
 if __name__ == "__main__":
-    user_url = requests.get ('{}/users'.format(url)).json()
+    user_url = requests.get('{}/users'.format(url)).json()
     todos_url = requests.get('{}/todos'.format(url)).json()
     user_data = {}
+
     for user in user_url:
         user_id = user.get('id')
         user_name = user.get('username')
@@ -18,7 +19,8 @@ if __name__ == "__main__":
             "username": user_name,
             "task": x.get('title'),
             "completed": x.get('completed')
-        }, todos))
+        }, todos
+        ))
         user_data['{}'.format(user_id)] = user_data
     with open('todo_all_employees.json', 'w') as f:
         json.dump(user_data, f)
