@@ -2,22 +2,28 @@
 """Export data in the CSV format"""
 import requests
 import sys
+import re
+
+
+url = 'https://jsonplaceholder.typicode.com'
 
 
 if __name__ == '__main__':
-    employeeId = sys.argv[1]
-    baseUrl = "https://jsonplaceholder.typicode.com/users"
-    url = baseUrl + "/" + employeeId
+    if len(sys.argv) > 1:
+        if re.fullmatch(r'\d+', sys.argv[1]):
+            id = int(sys.argv[1])
+            user_res = requests.get('{}/users/{}'.format(url, id)).json()
+            todos_res = requests.get('{}/todos'.format(url)).json()
+            user_name = user_res.get('username')
+            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
 
-    response = requests.get(url)
-    username = response.json().get('username')
-
-    todoUrl = url + "/todos"
-    response = requests.get(todoUrl)
-    tasks = response.json()
-
-    with open('{}.csv'.format(employeeId), 'w') as file:
-        for task in tasks:
-            file.write('"{}","{}","{}","{}"\n'
-                       .format(employeeId, username, task.get('completed'),
-                               task.get('title')))
+            with open('{}.csv'.format(id), 'w') as file:
+                for todo in todos:
+                    file.write(
+                        '"{}","{}","{}","{}"\n'.format(
+                            id,
+                            user_name,
+                            todo.get('completed'),
+                            todo.get('title')
+                        )
+                    )
