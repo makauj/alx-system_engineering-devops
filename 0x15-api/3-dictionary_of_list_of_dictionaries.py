@@ -4,23 +4,21 @@ import json
 import requests
 
 
+url = "https://jsonplaceholder.typicode.com"
+
 if __name__ == "__main__":
-    user_url = "https://jsonplaceholder.typicode.com/users"
-    response = requests.get(user_url)
-    users = response.json()
-    users_dict = {}
-    for user in users:
-        user_id = user.get("id")
-        users_dict[user_id] = []
-    todo_url = "https://jsonplaceholder.typicode.com/todos"
-    response = requests.get(todo_url)
-    todos = response.json()
-    for todo in todos:
-        task = {}
-        user_id = todo.get("userId")
-        task["username"] = users_dict[user_id]
-        task["task"] = todo.get("title")
-        task["completed"] = todo.get("completed")
-        users_dict[user_id].append(task)
-    with open("todo_all_employees.json", "w") as jsonfile:
-        json.dump(users_dict, jsonfile)
+    user_url = requests.get ('{}/users'.format(url)).json()
+    todos_url = requests.get('{}/todos'.format(url)).json()
+    user_data = {}
+    for user in user_url:
+        user_id = user.get('id')
+        user_name = user.get('username')
+        todos = list(filter(lambda x: x.get('userId') == user_id, todos_url))
+        user_data = list(map(lambda x: {
+            "username": user_name,
+            "task": x.get('title'),
+            "completed": x.get('completed')
+        }, todos))
+        user_data['{}'.format(user_id)] = user_data
+    with open('todo_all_employees.json', 'w') as f:
+        json.dump(user_data, f)
