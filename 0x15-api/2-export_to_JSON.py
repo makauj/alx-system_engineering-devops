@@ -5,17 +5,17 @@ import requests
 import sys
 
 
-def export_to_json():
-    """export to json file"""
+if __name__ == '__main__':
     user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com"
-    user_url = url + "/users/" + user_id
-    todos_url = url + "/todos"
-    user = requests.get(user_url)
-    todos = requests.get(todos_url)
+    user_url = "https://jsonplaceholder.typicode.com/users"
+    url = user_url + "/" + user_id
 
-    username = user.json().get('username')
-    tasks = todos.json()
+    response = requests.get(url)
+    username = response.json().get('username')
+
+    todo_url = url + "/todos"
+    response = requests.get(todo_url)
+    tasks = response.json()
 
     dictionary = {user_id: []}
     for task in tasks:
@@ -24,5 +24,5 @@ def export_to_json():
             "completed": task.get('completed'),
             "username": username
         })
-    with open(user_id + ".json", 'w') as f:
-        json.dump(dictionary, f)
+    with open('{}.json'.format(user_id), 'w') as filename:
+        json.dump(dictionary, filename)
