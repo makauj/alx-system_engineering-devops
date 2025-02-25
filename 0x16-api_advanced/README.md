@@ -14,11 +14,11 @@
 Most APi documentation has an overview section. This section generally covers basic information about the API, including what it does, how to connect to it and how to start using it.
 
 2. Learn the commonly used terms.
-**Hypertext Transfer Protocol (Secure) (HTTP(S))**
+***Hypertext Transfer Protocol (Secure) (HTTP(S))***
 This is a standardised protocol used to transfer data over a network. It is responsible for virtually all data exchanged through the internet.
 HTTPS uses Secure Socket Layer (SSL) to encrypt requests, securing the connection.
 
-**HTTP Verbs**
+***HTTP Verbs***
 HTTP request methods (verbs) are essentially the messenger between the client and the server.
 
 Common HTTP verbs are:
@@ -34,19 +34,19 @@ These HTTP verbs are fundamental to how web applications and APIs communicate. T
 
 It is very important to use the correct verb for the correct operation to maintain RESTful principles and ensure that the API behaves as expected. Using the wrong verb can lead to incorrect operations or unintended side effects.
 
-**Endpoint**
+***Endpoint***
 These are touch points allowing other applications to interact with other systems. Endpoints give you the location where that data can be retrieved from.
 
-**Request**
+***Request***
 To retrive some data, a client sends an API request to the server, usually for information sy=uch as the endpoint of the data the client needs.
 
-**Response**
+***Response***
 The requested data is known as a response and is commonly in JSON format. It could also be in XML, CSV, etc.
 
-**Header**
+***Header***
 When an API request or an API response is sent, some metadata is sent along with it. The metadata usually contains information, such as the type of content included in the request body, the client's authentication token or credentials, as well as the cache policy defined by the server. This metadata is contained in an API header, and it offers additional details that facilitate the communication between the client and the server.
 
-**Response Status Codes**
+***Response Status Codes***
 These are standardized 3-digit numbers essential to signal success or failure.
 Status codes not only signal that there is a failure or success, they also signal the type of failure/success that occured.
 Common staus codes include:
