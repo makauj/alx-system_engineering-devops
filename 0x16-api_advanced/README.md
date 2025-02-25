@@ -153,13 +153,13 @@ body_dict = json.loads(body_json)
 user_id = body_dict['userId']  # 1
 ```
 
-### Explanation
+#### Explanation
 
 - The `urllib.request.urlopen()` method performs the API call and returns an `HTTPResponse` object.
 - The `read()` method is used to get the response body (`body_json`), which contains the API response as a JSON string.
 - The `json.loads()` method parses that string into a Python dictionary.
 
-## Using `requests` Library
+### Using `requests` Library
 
 Alternatively, you can achieve the same result using the `requests` library, which simplifies the process of working with APIs:
 
@@ -174,7 +174,7 @@ body_dict = response.json()
 user_id = body_dict['userId']  # 1
 ```
 
-### Explanation
+#### Explanation
 
 - The `.json()` method of the `response` object automatically transforms the JSON data into the corresponding Python data structure.
 
