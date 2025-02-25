@@ -20,12 +20,19 @@ HTTPS uses Secure Socket Layer (SSL) to encrypt requests, securing the connectio
 
 **HTTP Verbs**
 HTTP request methods (verbs) are essentially the messenger between the client and the server.
+
 Common HTTP verbs are:
-*GET* - Used to retreive data from a server
+*GET* - Used to retrieve data from a server.
 *POST* - Used to send data, such as a username and a password on a form, to a server.
-*PUT* -
-*DELETE* -
-*PATCH* -
+*PUT* - Used to replace all current representations of the target resource with the request payload. Essentially it is used to update an entire resource.
+*DELETE* - Used to delete a specified resource.
+*PATCH* - Used to apply partial modifications to a resource.
+
+Context and Importance:
+
+These HTTP verbs are fundamental to how web applications and APIs communicate. They define the intended action when a client (like a web browser) makes a request to a server. 
+
+It is very important to use the correct verb for the correct operation to maintain RESTful principles and ensure that the API behaves as expected. Using the wrong verb can lead to incorrect operations or unintended side effects.
 
 **Endpoint**
 These are touch points allowing other applications to interact with other systems. Endpoints give you the location where that data can be retrieved from.
@@ -49,4 +56,52 @@ Common staus codes include:
 *403* - Forbidden
 *5XX* - Server side errors
 
-### How to use an API with pagination
+### API Pagination
+
+API Pagination is a technique that divides large datasets into smaller, manageable chunks (pages) for efficient retrieval, improving performance, reducing resource usage, and enhancing the user experience.
+
+#### Benefits of API Pagination
+
+- **Improved performance**: Faster response times.
+- **Reduced resource usage**: Less bandwidth, memory, and processing required.
+- **Enhanced user experience**: Smoother navigation and quicker results.
+- **Efficient data transfer**: Only necessary data is transferred.
+- **Scalability and flexibility**: Better handling of large data volumes.
+- **Error handling improvements**: Helps gracefully handle errors when retrieving data.
+
+#### Common Pagination Techniques
+
+- **Offset and Limit**: Uses an offset (starting point) and limit (number of records) to paginate.
+- **Cursor-Based**: A unique identifier (cursor) marks the position for pagination.
+- **Page-Based**: A page parameter requests specific pages.
+- **Time-Based**: Uses time ranges for temporal data pagination.
+- **Keyset Pagination**: Sorts data based on a unique key for efficient pagination.
+
+#### Best Practices
+
+- **Consistent Naming**: Use standard parameter names like `page`, `limit`.
+- **Include Metadata**: Provide details such as total records, current page, next/previous page links.
+- **Optimal Page Size**: Balance the amount of data per page with performance.
+- **Sorting and Filtering**: Allow users to refine results.
+- **Pagination Stability**: Ensure consistent data order between requests.
+- **Edge Case Handling**: Gracefully handle errors like invalid page numbers.
+- **Caching Strategies**: Implement caching for improved performance.
+
+#### Key Implementation Considerations
+
+- Understand **data characteristics**.
+- Consider **network latency** and **bandwidth**.
+- Evaluate **performance impact**.
+- Focus on **user experience** and usability.
+- Provide **flexible pagination parameters**.
+- Use **stable sorting mechanisms**.
+- Ensure the use of **unique and immutable identifiers**.
+- Apply **deterministic pagination techniques**.
+- Provide **clear and informative error messages**.
+- Implement **rate limiting and throttling**.
+- Consider various caching methods:
+  - Page-Level Caching
+  - Result Set Caching
+  - Time-Based Caching
+  - Conditional Caching
+  - Reverse Proxy Caching
