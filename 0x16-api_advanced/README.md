@@ -48,3 +48,5 @@ Common staus codes include:
 *401* - Unauthorized
 *403* - Forbidden
 *5XX* - Server side errors
+
+### How to use an API with pagination
