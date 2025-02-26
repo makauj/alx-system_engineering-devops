@@ -181,3 +181,5 @@ user_id = body_dict['userId']  # 1
 ### Conclusion
 
 Now you know how to parse a JSON API response in Python using both the `urllib` module and the `requests` library. Both methods are effective, and the choice depends on your preference or specific use case.
+
+## Parse JSON results
