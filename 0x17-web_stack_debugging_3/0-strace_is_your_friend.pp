@@ -5,5 +5,4 @@ exec { 'fix_apache_500_error':
   command => 'bash -c "sed -i s/class-wplocale.phpp/class-wp-locale.php/ \
   /var/www/html/wp-settings.php && service apache2 restart"',
   path    => '/usr/bin:/usr/sbin:/bin',
-  unless  => 'grep -q class-wp-locale.php /var/www/html/wp-settings.php',
 }
